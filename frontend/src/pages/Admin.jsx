@@ -1332,7 +1332,7 @@ const Admin = () => {
                     type="submit"
                     className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
                   >
-                    ✅ Upload {uploadType.charAt(0).toUpperCase() + uploadType.slice(1)}
+                    ✅ Upload {uploadFormData.type.charAt(0).toUpperCase() + uploadFormData.type.slice(1)}
                   </button>
                 </div>
               </form>
