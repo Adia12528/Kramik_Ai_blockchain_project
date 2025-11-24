@@ -1,4 +1,5 @@
 {
+  // Updated for Vercel deployment
   "rootDirectory": "frontend",
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
