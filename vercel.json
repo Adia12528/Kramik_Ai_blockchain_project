@@ -1,9 +1,6 @@
 {
-  // Updated for Vercel deployment
   "rootDirectory": "frontend",
-  "buildCommand": "npm install && npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": null,
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ."
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }

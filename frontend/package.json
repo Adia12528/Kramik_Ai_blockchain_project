@@ -1,6 +1,9 @@
 {
   "name": "kramik-frontend",
   "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
