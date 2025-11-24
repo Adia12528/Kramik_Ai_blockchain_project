@@ -57,6 +57,25 @@ npm install
 npm run dev
 ```
 
+### 🆓 Deploy for FREE
+
+Deploy the entire project at **zero cost** in ~55 minutes:
+
+📍 **[START HERE](START_HERE.md)** - Choose your deployment path
+
+**Quick Links**:
+- 🗺️ [Deployment Roadmap](DEPLOYMENT_ROADMAP.md) - Visual guide
+- 📖 [Complete Guide](FREE_DEPLOYMENT_GUIDE.md) - Full instructions
+- ⚡ [Quick Deploy](DEPLOY.md) - 3 simple steps
+- 🔍 [Compare Options](DEPLOYMENT_COMPARISON.md) - Choose strategy
+
+**Services (All FREE)**:
+- Frontend → Vercel
+- Backend → Render.com  
+- Database → MongoDB Atlas
+- Storage → Cloudinary
+- Blockchain → Sepolia Testnet
+
 ### Default Credentials
 
 **Student:**
@@ -99,6 +118,14 @@ kramik-hub/
 
 ## 📚 Documentation
 
+### 🚀 Deployment
+- **[FREE Deployment Guide](FREE_DEPLOYMENT_GUIDE.md)** - Deploy everything for free
+- **[Quick Deploy](DEPLOY.md)** - 3-step deployment
+- **[Vercel Guide](docs/guides/VERCEL_DEPLOYMENT.md)** - Vercel-specific
+- **[Deployment Checklist](VERCEL_CHECKLIST.md)** - Pre-deployment checklist
+
+### 📖 Features & Setup
+- **[Project Structure](PROJECT_STRUCTURE.md)** - Complete project organization
 - **[Blockchain Setup](docs/setup/BLOCKCHAIN_SETUP.md)** - Complete blockchain configuration
 - **[Features Guide](docs/features/BLOCKCHAIN_INTEGRATION.md)** - Blockchain features
 - **[Credits System](docs/features/CREDITS_SYSTEM.md)** - How credits work

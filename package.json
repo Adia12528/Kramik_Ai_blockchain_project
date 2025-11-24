@@ -7,10 +7,12 @@
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
-    "build": "npm run build:frontend && npm run build:backend",
+    "build": "cd frontend && npm install && npm run build",
     "build:frontend": "cd frontend && npm run build",
     "build:backend": "cd backend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
     "test": "npm run test:frontend && npm run test:backend",
+    "vercel-build": "cd frontend && npm install && npm run build",
     "docker:build": "docker-compose -f docker/docker-compose.yml build",
     "docker:up": "docker-compose -f docker/docker-compose.yml up -d",
     "docker:down": "docker-compose -f docker/docker-compose.yml down",
@@ -22,5 +24,9 @@
   },
   "keywords": ["education", "blockchain", "engineering", "react", "nodejs"],
   "author": "Kramik Team",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
 }
