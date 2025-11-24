@@ -22,11 +22,20 @@
   "devDependencies": {
     "concurrently": "^8.2.0"
   },
-  "keywords": ["education", "blockchain", "engineering", "react", "nodejs"],
+  "keywords": [
+    "education",
+    "blockchain",
+    "engineering",
+    "react",
+    "nodejs"
+  ],
   "author": "Kramik Team",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "mongodb": "^7.0.0"
   }
 }
