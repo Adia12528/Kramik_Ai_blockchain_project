@@ -1,0 +1,19 @@
+{
+  "name": "kramik-blockchain",
+  "scripts": {
+    "compile": "npx hardhat compile && node scripts/export-abi.js",
+    "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
+    "deploy-academic": "npx hardhat run scripts/deploy-academic.js --network sepolia",
+    "deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy-academic-local": "npx hardhat run scripts/deploy-academic.js --network localhost",
+    "test": "npx hardhat test",
+    "test-academic": "npx hardhat test test/KramikAcademicRecords.test.js",
+    "node": "npx hardhat node",
+    "export-abi": "node scripts/export-abi.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "dotenv": "^16.0.3",
+    "hardhat": "^2.12.0"
+  }
+}
