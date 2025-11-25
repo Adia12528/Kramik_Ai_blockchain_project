@@ -43,6 +43,16 @@ app.get('/health', (req, res) => {
   })
 })
 
+// Deep DB connection test route (for diagnostics only)
+app.get('/test-db', async (req, res) => {
+  try {
+    const collections = await (await import('mongoose')).default.connection.db.listCollections().toArray();
+    res.json({ status: 'ok', collections });
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack)
