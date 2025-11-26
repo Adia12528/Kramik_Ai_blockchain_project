@@ -32,41 +32,46 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required' })
     }
 
-    // Demo logins
-    if (email === 'admin' && password === 'admin123') {
+    // Demo logins (accept both username and email)
+    const isAdminDemo =
+      (email === 'admin' || email === 'admin@kramik.com') && password === 'admin123';
+    const isStudentDemo =
+      (email === 'student' || email === 'student@kramik.com') && password === 'stu123';
+
+    if (isAdminDemo) {
       const token = jwt.sign(
         { userId: 'admin-1', userType: 'admin' },
         process.env.JWT_SECRET,
         { expiresIn: '7d' }
-      )
+      );
       return res.json({
         user: {
           id: 'admin-1',
           name: 'Admin User',
           email: 'admin@kramik.com',
           userType: 'admin',
-          enrollmentId: 'ADMIN001'
+          enrollmentId: 'ADMIN001',
         },
-        token
-      })
+        token,
+      });
     }
 
-    if (email === 'student' && password === 'stu123') {
+    if (isStudentDemo) {
       const token = jwt.sign(
         { userId: 'student-demo-1', userType: 'student' },
         process.env.JWT_SECRET,
         { expiresIn: '7d' }
-      )
+      );
       return res.json({
         user: {
           id: 'student-demo-1',
           name: 'Demo Student',
           email: 'student@kramik.com',
           userType: 'student',
-          enrollmentId: 'KRM2025000'
+          enrollmentId: 'KRM2025000',
         },
-        token
-      })
+        token,
+      });
     }
 
     // Find user in MongoDB
