@@ -1,11 +1,11 @@
 # Multi-stage build for production
-FROM node:18-alpine as builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-RUN npm ci --only=production
+RUN rm -rf node_modules package-lock.json && npm install
 
 # Copy source code
 COPY . .
