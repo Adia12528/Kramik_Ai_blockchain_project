@@ -32,6 +32,7 @@ app.use(cors({
     const allowedOrigins = [
       'https://kramik-ai-blockchain-project.vercel.app',
       'https://kramik-ai-blockchain-project-clgum6yn1-adia12528s-projects.vercel.app',
+      'https://kramik-ai-blockchain-project-28si8bpl3-adia12528s-projects.vercel.app',
       'https://kramik-ai-blockchain-project.onrender.com',
       'http://localhost:5173',
       'http://localhost:3000',
