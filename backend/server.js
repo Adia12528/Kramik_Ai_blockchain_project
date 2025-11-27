@@ -22,12 +22,7 @@ const app = express()
 app.use(helmet())
 // CORS: Allow Vercel frontend, Render backend, and local dev
 app.use(cors({
-  origin: [
-    'https://kramik-ai-blockchain-project.vercel.app',
-    'https://kramik-ai-blockchain-project.onrender.com',
-    'http://localhost:5173',
-    'http://localhost:3000'
-  ],
+  origin: true, // Allow all origins for debugging
   credentials: true
 }))
 app.use(morgan('combined'))
