@@ -20,12 +20,13 @@ const app = express()
 
 // Middleware
 app.use(helmet())
+// CORS: Allow Vercel frontend, Render backend, and local dev
 app.use(cors({
   origin: [
-    'https://kramik-ai-blockchain-project.vercel.app', // Vercel frontend
-    'https://kramik-ai-blockchain-project.onrender.com', // Render backend (API calls from itself, if needed)
-    'http://localhost:5173', // Vite local frontend
-    'http://localhost:3000' // React local frontend (if used)
+    'https://kramik-ai-blockchain-project.vercel.app',
+    'https://kramik-ai-blockchain-project.onrender.com',
+    'http://localhost:5173',
+    'http://localhost:3000'
   ],
   credentials: true
 }))
