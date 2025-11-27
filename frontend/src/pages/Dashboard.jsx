@@ -1957,7 +1957,7 @@ ${generateResources(assignment)}
         {/* Tabs Navigation */}
         <div className={`mb-8 ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
           <div className="bg-white rounded-xl shadow-lg p-2">
-            <div className="flex space-x-2 overflow-x-auto">
+            <div className="flex overflow-x-auto scrollbar-hide space-x-1 sm:space-x-2">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -1966,15 +1966,15 @@ ${generateResources(assignment)}
                     setActiveTab(tab.id)
                   }}
                   type="button"
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
+                  className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap flex-shrink-0 cursor-pointer ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`}
                   style={{ pointerEvents: 'auto', zIndex: 10 }}
                 >
-                  <span className="text-xl">{tab.icon}</span>
-                  <span>{tab.name}</span>
+                  <span className="text-lg sm:text-xl">{tab.icon}</span>
+                  <span className="text-sm sm:text-base">{tab.name}</span>
                 </button>
               ))}
             </div>

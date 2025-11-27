@@ -659,40 +659,66 @@ const Admin = () => {
         </div>
 
         {/* Stats Dashboard */}
-        <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-          <div className="glass-effect p-4 rounded-xl shadow-lg border-l-4 border-blue-500">
-            <p className="text-gray-600 text-xs font-semibold">Students</p>
-            <p className="text-2xl font-extrabold text-blue-600 mt-1">{stats.totalStudents}</p>
-            <span className="text-2xl">👥</span>
+        <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-10 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
+          <div className="glass-effect p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer group" onClick={() => setActiveTab('students')}>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-gray-600 text-xs font-semibold">Students</p>
+              <span className="text-blue-500 group-hover:scale-110 transition-transform">👥</span>
+            </div>
+            <p className="text-xl sm:text-2xl font-extrabold text-blue-600 mt-1">{stats.totalStudents}</p>
+            <div className="mt-2 flex items-center text-xs text-gray-500">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Active Users
+            </div>
+            <div className="mt-1 flex items-center text-xs text-blue-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>View Details →</span>
+            </div>
           </div>
           
-          <div className="glass-effect p-4 rounded-xl shadow-lg border-l-4 border-green-500 cursor-pointer hover:shadow-xl transition-all" onClick={() => setShowWebsiteLinksModal(true)}>
+          <div className="glass-effect p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-green-500 cursor-pointer hover:shadow-xl transition-all" onClick={() => setShowWebsiteLinksModal(true)}>
             <p className="text-gray-600 text-xs font-semibold">AI Subjective</p>
-            <p className="text-sm font-bold text-green-600 mt-1">Manage Links</p>
+            <p className="text-xs sm:text-sm font-bold text-green-600 mt-1">Manage Links</p>
             <p className="text-xs text-gray-500 mt-1">🔗 {websiteLinks.length} links</p>
-            <span className="text-2xl">🌐</span>
+            <span className="text-lg sm:text-2xl">🌐</span>
           </div>
           
-          <div className="glass-effect p-4 rounded-xl shadow-lg border-l-4 border-purple-500">
-            <p className="text-gray-600 text-xs font-semibold">Assignments</p>
-            <p className="text-2xl font-extrabold text-purple-600 mt-1">{stats.total_assignments || 0}</p>
+          <div className="glass-effect p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-purple-500 hover:shadow-xl transition-all duration-300 cursor-pointer group" onClick={() => setActiveTab('assignments')}>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-gray-600 text-xs font-semibold">Assignments</p>
+              <span className="text-purple-500 group-hover:scale-110 transition-transform">📝</span>
+            </div>
+            <p className="text-lg sm:text-2xl font-extrabold text-purple-600 mt-1">{stats.total_assignments || 0}</p>
             <p className="text-xs text-gray-500 mt-1">✅ {stats.completed_assignments || 0} • ⏳ {stats.pending_assignments || 0}</p>
-            <span className="text-2xl">📝</span>
+            <div className="mt-1 flex items-center text-xs text-purple-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>View Details →</span>
+            </div>
           </div>
           
-          <div className="glass-effect p-4 rounded-xl shadow-lg border-l-4 border-orange-500">
-            <p className="text-gray-600 text-xs font-semibold">Pending</p>
-            <p className="text-2xl font-extrabold text-orange-600 mt-1">{stats.pendingApprovals}</p>
-            <span className="text-2xl">⏳</span>
+          <div className="glass-effect p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 cursor-pointer group" onClick={() => setActiveTab('students')}>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-gray-600 text-xs font-semibold">Pending</p>
+              <span className="text-orange-500 group-hover:scale-110 transition-transform">⏳</span>
+            </div>
+            <p className="text-lg sm:text-2xl font-extrabold text-orange-600 mt-1">{stats.pendingApprovals}</p>
+            <div className="mt-2 flex items-center text-xs text-orange-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>Manage Students →</span>
+            </div>
           </div>
           
-          <div className={`glass-effect p-4 rounded-xl shadow-lg border-l-4 ${
+          <div className={`glass-effect p-3 sm:p-4 rounded-xl shadow-lg border-l-4 col-span-2 sm:col-span-1 hover:shadow-xl transition-all duration-300 ${
             stats.systemHealth >= 80 ? 'border-green-500' : 
             stats.systemHealth >= 50 ? 'border-yellow-500' : 
             'border-red-500'
           }`}>
-            <p className="text-gray-600 text-xs font-semibold">System Health</p>
-            <p className={`text-2xl font-extrabold mt-1 ${
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-gray-600 text-xs font-semibold">System Health</p>
+              <span className={`${
+                stats.systemHealth >= 80 ? 'text-green-500' : 
+                stats.systemHealth >= 50 ? 'text-yellow-500' : 
+                'text-red-500'
+              }`}>💚</span>
+            </div>
+            <p className={`text-lg sm:text-2xl font-extrabold mt-1 ${
               stats.systemHealth >= 80 ? 'text-green-600' : 
               stats.systemHealth >= 50 ? 'text-yellow-600' : 
               'text-red-600'
@@ -700,25 +726,34 @@ const Admin = () => {
             <p className="text-xs text-gray-500 mt-1">
               {stats.systemHealth === 100 ? 'Perfect!' : stats.systemHealth >= 80 ? 'Great' : stats.systemHealth >= 50 ? 'Good' : 'Low'}
             </p>
-            <span className="text-2xl">
-              {stats.systemHealth >= 80 ? '💚' : stats.systemHealth >= 50 ? '💛' : '❤️'}
-            </span>
+            <div className={`mt-2 flex items-center text-xs font-medium ${
+              stats.systemHealth >= 80 ? 'text-green-600' : 
+              stats.systemHealth >= 50 ? 'text-yellow-600' : 
+              'text-red-600'
+            }`}>
+              <span className={`inline-block w-2 h-2 rounded-full mr-2 ${
+                stats.systemHealth >= 80 ? 'bg-green-500' : 
+                stats.systemHealth >= 50 ? 'bg-yellow-500' : 
+                'bg-red-500'
+              }`}></span>
+              {stats.systemHealth >= 80 ? 'Optimal' : stats.systemHealth >= 50 ? 'Stable' : 'Needs Attention'}
+            </div>
           </div>
         </div>
 
         {/* Tabs Navigation */}
         <div className={`mb-8 ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
           <div className="bg-white rounded-xl shadow-lg p-2">
-            <div className="flex space-x-2 overflow-x-auto">
+            <div className="flex space-x-1 sm:space-x-2 overflow-x-auto scrollbar-hide">
               {['overview', 'assignments', 'students', 'schedule', 'ai-assistant'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   type="button"
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
+                  className={`px-4 sm:px-6 py-3 sm:py-3 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer min-w-[120px] sm:min-w-[140px] text-sm sm:text-base ${
                     activeTab === tab
-                      ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg'
-                      : 'text-gray-600 hover:bg-gray-100'
+                      ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg transform scale-105'
+                      : 'text-gray-600 hover:bg-gray-100 hover:scale-102'
                   }`}
                 >
                   {tab === 'overview' && '📊 Overview'}
@@ -734,165 +769,165 @@ const Admin = () => {
 
         {/* Tab Content */}
         {activeTab === 'overview' && (
-          <div className="lg:grid lg:grid-cols-3 gap-8">
+          <div className="space-y-6">
             {/* Admin Profile */}
-            <div className={`col-span-1 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '600ms' }}>
-              <div className="glass-effect p-8 rounded-2xl shadow-xl sticky top-24">
-                <div className="flex flex-col items-center mb-6">
-                  <div className="relative group">
-                    <div className="w-32 h-32 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
-                      <span className="text-5xl text-white font-bold">{(adminData?.name && adminData.name.charAt(0)) || 'A'}</span>
+            <div className={`glass-effect p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '600ms' }}>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-4 sm:mb-0">
+                  <div className="relative group mx-auto sm:mx-0">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300">
+                      <span className="text-3xl sm:text-5xl text-white font-bold">{(adminData?.name && adminData.name.charAt(0)) || 'A'}</span>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-red-500 rounded-full border-4 border-white flex items-center justify-center">
-                      <span className="text-white text-xs">⚙️</span>
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-red-500 rounded-full border-4 border-white flex items-center justify-center">
+                      <span className="text-white text-xs sm:text-sm">⚙️</span>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mt-4">Admin Profile</h3>
-                  <button
-                    onClick={() => {
-                      setEditFormData({
-                        name: adminData?.name || '',
-                        organization: adminData?.organization || '',
-                        department: adminData?.department || '',
-                        phone: adminData?.phone || '',
-                        address: adminData?.address || '',
-                        bio: adminData?.bio || ''
-                      })
-                      setShowProfileEditor(true)
-                    }}
-                    className="mt-3 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold px-6 py-2 rounded-full hover:from-red-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                  >
-                    ✏️ Edit Profile
-                  </button>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Admin Profile</h3>
+                    <button
+                      onClick={() => {
+                        setEditFormData({
+                          name: adminData?.name || '',
+                          organization: adminData?.organization || '',
+                          department: adminData?.department || '',
+                          phone: adminData?.phone || '',
+                          address: adminData?.address || '',
+                          bio: adminData?.bio || ''
+                        })
+                        setShowProfileEditor(true)
+                      }}
+                      className="mt-2 sm:mt-3 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:from-red-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base min-h-[44px] w-full sm:w-auto"
+                    >
+                      ✏️ Edit Profile
+                    </button>
+                  </div>
                 </div>
-                
-                <div className="space-y-4 text-gray-700">
-                  <div className="p-3 bg-white rounded-xl border-l-4 border-red-500">
-                    <p className="text-xs text-gray-500 font-semibold">Full Name</p>
-                    <p className="font-bold text-gray-800 break-words">{adminData?.name || '-'}</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border-l-4 border-orange-500">
-                    <p className="text-xs text-gray-500 font-semibold">Email</p>
-                    <p className="font-bold text-gray-800 break-all text-sm">{adminData?.email || '-'}</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border-l-4 border-purple-500">
-                    <p className="text-xs text-gray-500 font-semibold">Organization</p>
-                    <p className="font-bold text-gray-800 break-words">{adminData?.organization || '-'}</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border-l-4 border-blue-500">
-                    <p className="text-xs text-gray-500 font-semibold">Department</p>
-                    <p className="font-bold text-gray-800 break-words">{adminData?.department || '-'}</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border-l-4 border-green-500">
-                    <p className="text-xs text-gray-500 font-semibold">Contact</p>
-                    <p className="font-bold text-gray-800">{adminData?.phone || '-'}</p>
-                  </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-gray-700">
+                <div className="p-3 bg-white rounded-xl border-l-4 border-red-500">
+                  <p className="text-xs text-gray-500 font-semibold">Full Name</p>
+                  <p className="font-bold text-gray-800 break-words text-sm sm:text-base">{adminData?.name || '-'}</p>
+                </div>
+                <div className="p-3 bg-white rounded-xl border-l-4 border-orange-500">
+                  <p className="text-xs text-gray-500 font-semibold">Email</p>
+                  <p className="font-bold text-gray-800 break-all text-xs sm:text-sm">{adminData?.email || '-'}</p>
+                </div>
+                <div className="p-3 bg-white rounded-xl border-l-4 border-purple-500">
+                  <p className="text-xs text-gray-500 font-semibold">Organization</p>
+                  <p className="font-bold text-gray-800 break-words text-sm sm:text-base">{adminData?.organization || '-'}</p>
+                </div>
+                <div className="p-3 bg-white rounded-xl border-l-4 border-blue-500">
+                  <p className="text-xs text-gray-500 font-semibold">Department</p>
+                  <p className="font-bold text-gray-800 break-words text-sm sm:text-base">{adminData?.department || '-'}</p>
+                </div>
+                <div className="p-3 bg-white rounded-xl border-l-4 border-green-500 sm:col-span-2">
+                  <p className="text-xs text-gray-500 font-semibold">Contact</p>
+                  <p className="font-bold text-gray-800 text-sm sm:text-base">{adminData?.phone || '-'}</p>
                 </div>
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div className="col-span-2 space-y-6 mt-8 lg:mt-0">
-              <div className={`glass-effect p-6 rounded-2xl shadow-xl border-l-4 border-orange-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '800ms' }}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <span className="text-3xl mr-3">📤</span>
-                    <h3 className="text-2xl font-bold text-gray-800">Upload Documents</h3>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-6">Upload assignments for students</p>
-                <div className="grid grid-cols-1 gap-4">
-                  <button 
-                    onClick={() => {
-                      setShowUploadModal(true)
-                    }}
-                    className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold py-3 px-4 rounded-xl hover:from-purple-600 hover:to-indigo-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    📝 Upload Assignment
-                  </button>
+            <div className={`glass-effect p-4 sm:p-6 rounded-2xl shadow-xl border-l-4 border-orange-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '800ms' }}>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <span className="text-2xl sm:text-3xl mr-3">📤</span>
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-800">Upload Documents</h3>
                 </div>
               </div>
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Upload assignments for students</p>
+              <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                <button 
+                  onClick={() => {
+                    setShowUploadModal(true)
+                  }}
+                  className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold py-3 sm:py-3 px-4 sm:px-4 rounded-xl hover:from-purple-600 hover:to-indigo-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all text-sm sm:text-base min-h-[48px] w-full"
+                >
+                  📝 Upload Assignment
+                </button>
+              </div>
+            </div>
 
-              <div className={`glass-effect p-6 rounded-2xl shadow-xl border-l-4 border-green-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl mr-3">📊</span>
-                  <h3 className="text-2xl font-bold text-gray-800">Recent Activity</h3>
+            <div className={`glass-effect p-4 sm:p-6 rounded-2xl shadow-xl border-l-4 border-green-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
+              <div className="flex items-center mb-4">
+                <span className="text-2xl sm:text-3xl mr-3">📊</span>
+                <h3 className="text-lg sm:text-2xl font-bold text-gray-800">Recent Activity</h3>
+              </div>
+              <div className="space-y-3">
+                {assignments.slice(0, 3).map((item, index) => (
+                  <div key={index} className="bg-white p-3 sm:p-4 rounded-xl border-l-4 border-green-500">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="font-bold text-gray-800 text-sm sm:text-base">{item.title}</p>
+                        <p className="text-xs sm:text-sm text-gray-500">{item.subject} • {item.creditPoints} points</p>
+                      </div>
+                      <span className="text-lg sm:text-2xl">
+                        {item.type === 'assignment' && '📝'}
+                        {item.type === 'project' && '🚀'}
+                        {item.type === 'lab' && '🧪'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={`glass-effect p-4 sm:p-6 rounded-2xl shadow-xl border-l-4 border-blue-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <span className="text-2xl sm:text-3xl mr-3">🔗</span>
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-800">Website Links</h3>
                 </div>
-                <div className="space-y-3">
-                  {assignments.slice(0, 3).map((item, index) => (
-                    <div key={index} className="bg-white p-4 rounded-xl border-l-4 border-green-500">
+                <button
+                  onClick={() => setShowWebsiteLinksModal(true)}
+                  className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold px-4 sm:px-4 py-2 sm:py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-sm min-h-[44px] w-full sm:w-auto"
+                >
+                  ➕ Add Link
+                </button>
+              </div>
+              <div className="space-y-3 max-h-64 sm:max-h-96 overflow-y-auto pr-1">
+                {websiteLinks.length === 0 ? (
+                  <div className="text-center py-6 sm:py-8 text-gray-500">
+                    <p className="text-3xl sm:text-4xl mb-2">🌐</p>
+                    <p className="text-sm sm:text-base">No website links added yet</p>
+                    <p className="text-xs sm:text-sm mt-1">Click "Add Link" to create your first link</p>
+                  </div>
+                ) : (
+                  websiteLinks.map((link) => (
+                    <div key={link.id} className="bg-white p-3 sm:p-4 rounded-xl border-l-4 border-blue-500 hover:shadow-md transition-all">
                       <div className="flex justify-between items-start">
-                        <div>
-                          <p className="font-bold text-gray-800">{item.title}</p>
-                          <p className="text-sm text-gray-500">{item.subject} • {item.creditPoints} points</p>
-                        </div>
-                        <span className="text-2xl">
-                          {item.type === 'assignment' && '📝'}
-                          {item.type === 'project' && '🚀'}
-                          {item.type === 'lab' && '🧪'}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className={`glass-effect p-6 rounded-2xl shadow-xl border-l-4 border-blue-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <span className="text-3xl mr-3">🔗</span>
-                    <h3 className="text-2xl font-bold text-gray-800">Website Links</h3>
-                  </div>
-                  <button
-                    onClick={() => setShowWebsiteLinksModal(true)}
-                    className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold px-4 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm"
-                  >
-                    ➕ Add Link
-                  </button>
-                </div>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {websiteLinks.length === 0 ? (
-                    <div className="text-center py-8 text-gray-500">
-                      <p className="text-4xl mb-2">🌐</p>
-                      <p>No website links added yet</p>
-                      <p className="text-sm mt-1">Click "Add Link" to create your first link</p>
-                    </div>
-                  ) : (
-                    websiteLinks.map((link) => (
-                      <div key={link.id} className="bg-white p-4 rounded-xl border-l-4 border-blue-500 hover:shadow-md transition-all">
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <p className="font-bold text-gray-800">{link.title}</p>
-                              <span className="bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                                {link.category}
-                              </span>
-                            </div>
-                            {link.description && (
-                              <p className="text-sm text-gray-600 mb-2">{link.description}</p>
-                            )}
-                            <a
-                              href={link.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-blue-500 hover:text-blue-700 hover:underline flex items-center gap-1"
-                            >
-                              <span>🌐</span>
-                              <span className="break-all">{link.url}</span>
-                            </a>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <p className="font-bold text-gray-800 text-sm sm:text-base">{link.title}</p>
+                            <span className="bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                              {link.category}
+                            </span>
                           </div>
-                          <button
-                            onClick={() => handleDeleteWebsiteLink(link.id)}
-                            className="ml-3 text-red-500 hover:text-red-700 text-xl font-bold"
-                            title="Delete link"
+                          {link.description && (
+                            <p className="text-xs sm:text-sm text-gray-600 mb-2">{link.description}</p>
+                          )}
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-blue-500 hover:text-blue-700 hover:underline flex items-center gap-1"
                           >
-                            ×
-                          </button>
+                            <span>🌐</span>
+                            <span className="break-all">{link.url}</span>
+                          </a>
                         </div>
+                        <button
+                          onClick={() => handleDeleteWebsiteLink(link.id)}
+                          className="ml-2 sm:ml-3 text-red-500 hover:text-red-700 text-lg sm:text-xl font-bold"
+                          title="Delete link"
+                        >
+                          ×
+                        </button>
                       </div>
-                    ))
-                  )}
-                </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

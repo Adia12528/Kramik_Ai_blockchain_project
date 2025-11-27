@@ -103,8 +103,8 @@ const ProfileCard = ({ student, onUpdate }) => {
 
       {isEditing ? (
         <form onSubmit={handleSave} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name
               </label>
@@ -113,7 +113,7 @@ const ProfileCard = ({ student, onUpdate }) => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                 required
               />
             </div>
@@ -128,26 +128,25 @@ const ProfileCard = ({ student, onUpdate }) => {
                 onChange={handleInputChange}
                 min="16"
                 max="60"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Course
+              </label>
+              <input
+                type="text"
+                name="course"
+                value={formData.course}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                 required
               />
             </div>
           </div>
           
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Course
-            </label>
-            <input
-              type="text"
-              name="course"
-              value={formData.course}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              required
-            />
-          </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               College
@@ -157,7 +156,7 @@ const ProfileCard = ({ student, onUpdate }) => {
               name="college"
               value={formData.college}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
               required
             />
           </div>
@@ -171,23 +170,23 @@ const ProfileCard = ({ student, onUpdate }) => {
               value={formData.skills}
               onChange={handleInputChange}
               rows="3"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
               placeholder="e.g., JavaScript, React, Node.js, Python"
             />
           </div>
 
-          <div className="flex space-x-3 pt-4">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg font-semibold hover:bg-gray-300 transition duration-200"
+              className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg font-semibold hover:bg-gray-300 transition duration-200 text-sm"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200 disabled:opacity-50"
+              className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200 disabled:opacity-50 text-sm"
             >
               {loading ? 'Saving...' : 'Save'}
             </button>
@@ -195,36 +194,36 @@ const ProfileCard = ({ student, onUpdate }) => {
         </form>
       ) : (
         <>
-          <div className="space-y-4 text-gray-700">
-            <div className="flex justify-between border-b pb-2">
-              <span className="font-semibold text-indigo-600">Name:</span>
-              <span>{student?.name || 'Not set'}</span>
+          <div className="space-y-3 text-gray-700">
+            <div className="flex flex-col sm:flex-row sm:justify-between border-b pb-2">
+              <span className="font-semibold text-indigo-600 text-sm">Name:</span>
+              <span className="text-sm sm:text-right">{student?.name || 'Not set'}</span>
             </div>
-            <div className="flex justify-between border-b pb-2">
-              <span className="font-semibold text-indigo-600">Age:</span>
-              <span>{student?.age || 'Not set'}</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between border-b pb-2">
+              <span className="font-semibold text-indigo-600 text-sm">Age:</span>
+              <span className="text-sm">{student?.age || 'Not set'}</span>
             </div>
-            <div className="flex justify-between border-b pb-2">
-              <span className="font-semibold text-indigo-600">Course:</span>
-              <span className="text-right">{student?.course || 'Not set'}</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between border-b pb-2">
+              <span className="font-semibold text-indigo-600 text-sm">Course:</span>
+              <span className="text-sm text-right break-words">{student?.course || 'Not set'}</span>
             </div>
-            <div className="flex justify-between border-b pb-2">
-              <span className="font-semibold text-indigo-600">College:</span>
-              <span className="text-right">{student?.college || 'Not set'}</span>
+            <div className="flex flex-col sm:flex-row sm:justify-between border-b pb-2">
+              <span className="font-semibold text-indigo-600 text-sm">College:</span>
+              <span className="text-sm text-right break-words">{student?.college || 'Not set'}</span>
             </div>
             <div>
-              <span className="font-semibold text-indigo-600 block mb-2">Skills:</span>
-              <div className="flex flex-wrap gap-2">
+              <span className="font-semibold text-indigo-600 block mb-2 text-sm">Skills:</span>
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {student?.skills?.map((skill, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800"
+                    className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800"
                   >
                     {skill}
                   </span>
                 ))}
                 {(!student?.skills || student.skills.length === 0) && (
-                  <span className="text-gray-500 text-sm">No skills added</span>
+                  <span className="text-gray-500 text-xs">No skills added</span>
                 )}
               </div>
             </div>
@@ -232,7 +231,7 @@ const ProfileCard = ({ student, onUpdate }) => {
 
           <button
             onClick={() => setIsEditing(true)}
-            className="w-full mt-6 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200"
+            className="w-full mt-4 sm:mt-6 bg-green-500 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200 text-sm sm:text-base"
           >
             Update Profile
           </button>
