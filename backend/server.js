@@ -19,17 +19,40 @@ connectDB()
 const app = express()
 
 // Middleware
-app.use(helmet())
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}))
+
 // CORS: Allow Vercel frontend, Render backend, and local dev
 app.use(cors({
-  origin: [
-    'https://kramik-ai-blockchain-project-clgum6yn1-adia12528s-projects.vercel.app',
-    'https://kramik-ai-blockchain-project.onrender.com',
-    'http://localhost:5173',
-    'http://localhost:3000'
-  ],
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
+    const allowedOrigins = [
+      'https://kramik-ai-blockchain-project.vercel.app',
+      'https://kramik-ai-blockchain-project-clgum6yn1-adia12528s-projects.vercel.app',
+      'https://kramik-ai-blockchain-project.onrender.com',
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'http://localhost:3001'
+    ];
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('Blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 }))
+
+// Handle preflight requests explicitly
+app.options('*', cors())
 app.use(morgan('combined'))
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true }))
