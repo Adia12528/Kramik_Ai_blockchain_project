@@ -2,6 +2,7 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "nodeVersion": "20.x",
   "env": {
     "VITE_API_URL": "https://kramik-ai-blockchain-project.onrender.com/api"
   },

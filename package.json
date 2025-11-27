@@ -32,7 +32,7 @@
   "author": "Kramik Team",
   "license": "MIT",
   "engines": {
-    "node": "24.x",
+    "node": "20.x",
     "npm": ">=8.0.0"
   },
   "dependencies": {
