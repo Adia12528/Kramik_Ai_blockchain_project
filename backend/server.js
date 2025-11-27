@@ -20,7 +20,15 @@ const app = express()
 
 // Middleware
 app.use(helmet())
-app.use(cors())
+app.use(cors({
+  origin: [
+    'https://kramik-ai-blockchain-project.vercel.app', // Vercel frontend
+    'https://kramik-ai-blockchain-project.onrender.com', // Render backend (API calls from itself, if needed)
+    'http://localhost:5173', // Vite local frontend
+    'http://localhost:3000' // React local frontend (if used)
+  ],
+  credentials: true
+}))
 app.use(morgan('combined'))
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true }))
