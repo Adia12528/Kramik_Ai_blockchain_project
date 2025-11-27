@@ -2,7 +2,7 @@
   "name": "kramik-frontend",
   "type": "module",
   "engines": {
-    "node": ">=16.0.0"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "vite",
