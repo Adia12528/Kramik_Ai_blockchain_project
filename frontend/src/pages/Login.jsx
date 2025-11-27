@@ -466,6 +466,22 @@ const Login = () => {
               </div>
             )}
 
+            {/* Demo Credentials for Student */}
+            {activeTab === 'student' && !isRegisterMode && (
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-r">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">🔑</span>
+                  <div>
+                    <p className="text-sm font-semibold text-blue-900 mb-1">Demo Student Credentials</p>
+                    <p className="text-xs text-blue-700">
+                      <strong>Email:</strong> student<br />
+                      <strong>Password:</strong> stu123
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {isRegisterMode && (
                 <div>
