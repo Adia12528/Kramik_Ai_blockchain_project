@@ -162,4 +162,14 @@ npm run deploy
 
 ---
 
+Open source projects needs a regular updation and maintainance: 
+Need suggestions regarding the Improvements and the design flaws also question me if seen something undervalued or having issues regarding the understanding of this particular project.
+
+Answer Somequestions after understanding projects:
+1. Why it should be used in future ?
+2. Is it really a worthh project ?
+3. Could be better and why ?
+4. What arr changes required and where ?
+
+
 **Built with ❤️ for engineering students worldwide 🌍**
